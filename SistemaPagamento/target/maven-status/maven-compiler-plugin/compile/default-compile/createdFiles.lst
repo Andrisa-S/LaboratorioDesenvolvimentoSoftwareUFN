@@ -1,0 +1,5 @@
+pkg\MetodoPagamento.class
+pkg\Principal.class
+pkg\PayPalPagamento.class
+pkg\CartaoCreditoPagamento.class
+pkg\PIXPagamento.class
