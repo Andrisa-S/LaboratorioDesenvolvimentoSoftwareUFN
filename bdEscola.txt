@@ -46,10 +46,3 @@ INSERT INTO matricula (id_aluno, id_professor, data_matricula)
       (3, 2, '1709-07-19'),
       (4, 2, '1205-09-09'),
       (5, 1, '1954-09-18');
-
-CREATE TABLE pessoa (
-     id INT AUTO_INCREMENT PRIMARY KEY,
-     nome VARCHAR(40),
-     sexo VARCHAR(10),
-     idioma VARCHAR(40)
-     );

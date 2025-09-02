@@ -22,6 +22,12 @@ public class Interface extends javax.swing.JFrame {
     }
     
     String sexo;
+    
+    private void limparFormulario(){
+        txtNome.setText("");
+        btnGroupSexo.clearSelection();
+        cmbIdioma.setSelectedIndex(0);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -142,6 +148,7 @@ public class Interface extends javax.swing.JFrame {
         
         PessoaDAO pDAO = new PessoaDAO();
         pDAO.inserir(p);
+        limparFormulario();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
