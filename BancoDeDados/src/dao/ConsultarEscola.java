@@ -46,7 +46,7 @@ public class ConsultarEscola extends javax.swing.JFrame {
         btnAtualizar = new javax.swing.JButton();
         lblIdade = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        lblIdioma = new javax.swing.JLabel();
+        lblCursoDisc = new javax.swing.JLabel();
         btnExcluir = new javax.swing.JButton();
         txtId = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
@@ -80,12 +80,18 @@ public class ConsultarEscola extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Atualizar e Excluir Pessoa");
 
-        lblIdioma.setText("Curso/Disciplina:");
+        lblCursoDisc.setText("Curso/Disciplina:");
 
         btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
+            }
+        });
+
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
             }
         });
 
@@ -150,7 +156,7 @@ public class ConsultarEscola extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(lblIdioma)
+                                            .addComponent(lblCursoDisc)
                                             .addGap(269, 269, 269))
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(lblIdade)
@@ -206,7 +212,7 @@ public class ConsultarEscola extends javax.swing.JFrame {
                     .addComponent(txtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblIdioma)
+                    .addComponent(lblCursoDisc)
                     .addComponent(cmbCursoDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -219,31 +225,45 @@ public class ConsultarEscola extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
-        String sexo = null;
-        if(rdFeminino.isSelected()){
-            sexo = "F";
-        }
-        else if(rdMasculino.isSelected()){
-            sexo = "M";
-        }
-        Pessoa p = new Pessoa();
-        p.setId(Integer.parseInt(txtIdFixo.getText()));
-        p.setNome(txtNome.getText());
-        p.setSexo(sexo);
-        p.setIdioma(cmbCursoDisciplina.getSelectedItem().toString());
-        System.out.println("Pessoa atualizada!");
+       if(rdAluno.isSelected()){
+            Aluno a = new Aluno();
+            a.setId(Integer.parseInt(txtIdFixo.getText()));
+            a.setNome(txtNome.getText());
+            a.setIdade(Integer.parseInt(txtIdade.getText()));
+            a.setCurso(cmbCursoDisciplina.getSelectedItem().toString());
+            System.out.println("Aluno atualizado!");
 
-        PessoaDAO pDAO = new PessoaDAO();
-        pDAO.editar(p);
-        limparFormulario();
+            AlunoDAO aDAO = new AlunoDAO();
+            aDAO.editar(a);
+            limparFormulario();
+        }
+        else if(rdProfessor.isSelected()){
+            Professor po = new Professor();
+            po.setId(Integer.parseInt(txtIdFixo.getText()));
+            po.setNome(txtNome.getText());
+            po.setIdade(Integer.parseInt(txtIdade.getText()));
+            po.setDisciplina(cmbCursoDisciplina.getSelectedItem().toString());
+            System.out.println("Professor atualizado!");
+
+            ProfessorDAO poDAO = new ProfessorDAO();
+            poDAO.editar(po);
+            limparFormulario();
+        
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", "Exclusão", JOptionPane.YES_NO_OPTION);
         if(resposta == JOptionPane.YES_OPTION){
-            PessoaDAO pDAO = new PessoaDAO();
-            pDAO.excluir(Integer.parseInt(txtIdFixo.getText()));
-            limparFormulario();
+            if(rdAluno.isSelected()){
+                AlunoDAO aDAO = new AlunoDAO();
+                aDAO.excluir(Integer.parseInt(txtIdFixo.getText()));
+                limparFormulario();
+            } else if(rdProfessor.isSelected()){
+                ProfessorDAO poDAO = new ProfessorDAO();
+                poDAO.excluir(Integer.parseInt(txtIdFixo.getText()));
+                limparFormulario();
+            }
+            
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
@@ -293,6 +313,10 @@ public class ConsultarEscola extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rdAlunoActionPerformed
 
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -335,10 +359,10 @@ public class ConsultarEscola extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btnGroupTipo;
     private javax.swing.JComboBox<String> cmbCursoDisciplina;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblCursoDisc;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblIdFixo;
     private javax.swing.JLabel lblIdade;
-    private javax.swing.JLabel lblIdioma;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblTipo;
     private javax.swing.JRadioButton rdAluno;

@@ -60,4 +60,16 @@ public class ProfessorDAO {
             System.out.println("Erro ao atualizar pessoa: " + ex.getMessage());
         }
     }
+    
+    public void excluir(int id){
+        try{
+            String sql = "DELETE FROM pessoa WHERE id = ?";
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+        } catch (SQLException ex){
+            System.out.println("Erro ao atualizar professor: " + ex.getMessage());
+        }
+    }
 }
