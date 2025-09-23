@@ -4,8 +4,6 @@
  */
 package conexao;
 
-import beans.Pessoa;
-import dao.PessoaDAO;
 import javax.swing.JOptionPane;
 
 /**

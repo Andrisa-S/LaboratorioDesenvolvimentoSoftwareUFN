@@ -4,12 +4,13 @@
  */
 package dao;
 
-import beansEx2.Aluno;
+import beans.Aluno;
 import conexao.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,8 +26,25 @@ public class AlunoDAO {
         this.conn = this.conexao.getConexao();
     }
     
+    public void inserir (Aluno aluno){
+        String sql = "INSERT INTO aluno (nome, idade, curso) VALUES (?,?,?);";
+        
+        try{
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setString(1,aluno.getNome());
+            stmt.setInt(2, aluno.getIdade());
+            stmt.setString(3, aluno.getCurso());
+            
+            stmt.execute();
+            
+            System.out.println("Aluno inserido!");
+        } catch (SQLException ex) {
+            System.out.println("Erro ao inserir aluno: " + ex.getMessage());
+        }
+    }
+    
     public Aluno getAluno (int id){
-        String sql = "SELECT * FROM pessoa WHERE id = ?";
+        String sql = "SELECT * FROM aluno WHERE id = ?";
         
         try {
             PreparedStatement stmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
@@ -85,7 +103,40 @@ public class AlunoDAO {
             
             while (rs.next()){
                 Aluno a = new Aluno();
+                a.setId(rs.getInt("id"));
+                a.setNome(rs.getString("nome"));
+                a.setIdade(rs.getInt("idade"));
+                a.setCurso(rs.getString("curso"));
+                listaAlunos.add(a);
             }
+            return listaAlunos;
+        } catch (SQLException ex){
+            System.out.println("Erro ao consultar todos os alunos: " + ex.getMessage());
+            return null;
+        }
+    }
+    
+    public List<Aluno> getAlunosNome (String nome){
+        String sql = "SELECT * FROM aluno WHERE nome LIKE ?";
+        
+        try{
+            PreparedStatement stmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            stmt.setString(1, "%" + nome + "%");
+            ResultSet rs = stmt.executeQuery();
+            List<Aluno> listaAlunos = new ArrayList();
+            
+            while (rs.next()){
+                Aluno a = new Aluno();
+                a.setId(rs.getInt("id"));
+                a.setNome(rs.getString("nome"));
+                a.setIdade(rs.getInt("idade"));
+                a.setCurso(rs.getString("curso"));
+                listaAlunos.add(a);
+            }
+            return listaAlunos;
+        } catch (SQLException ex){
+            System.out.println("Erro ao consultar todos os alunos: " + ex.getMessage());
+            return null;
         }
     }
 }

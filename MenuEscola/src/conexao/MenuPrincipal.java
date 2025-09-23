@@ -5,7 +5,7 @@
 package conexao;
 
 import dao.InterfaceConsulta;
-import dao.RelatorioPessoas;
+import dao.RelatorioAlunos;
 
 /**
  *
@@ -37,6 +37,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         editPessoa = new javax.swing.JMenuItem();
         MnRelatorios = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,7 +55,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         MnCadastro.setText("Cadastro");
 
-        cadPessoa.setText("Cadastro de Pessoas");
+        cadPessoa.setText("Cadastro de Alunos/Professores");
         cadPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadPessoaActionPerformed(evt);
@@ -62,7 +63,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         MnCadastro.add(cadPessoa);
 
-        editPessoa.setText("Editar e excluir Pessoas");
+        editPessoa.setText("Editar e excluir Alunos/Professores");
         editPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editPessoaActionPerformed(evt);
@@ -74,13 +75,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         MnRelatorios.setText("Relatórios");
 
-        jMenuItem1.setText("Relatório de Pessoas");
+        jMenuItem1.setText("Relatório de Alunos");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
             }
         });
         MnRelatorios.add(jMenuItem1);
+
+        jMenuItem3.setText("Relatório de Professores");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        MnRelatorios.add(jMenuItem3);
 
         jMenuBar2.add(MnRelatorios);
 
@@ -111,13 +120,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_cadPessoaActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        RelatorioPessoas relPessoa = new RelatorioPessoas();
+        RelatorioAlunos relPessoa = new RelatorioAlunos();
         relPessoa.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,7 +176,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JTextField txtNome1;
-    private javax.swing.JTextField txtNome2;
+    private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 }
