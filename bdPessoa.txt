@@ -22,3 +22,8 @@ INSERT INTO pessoa (nome, sexo, idioma)
     ('Andrisa', 'F', 'Português'),
     ('Nadine', 'F', 'Russo'),
     ('Michel', 'M', 'Português');
+
+INSERT INTO veiculo (modelo, placa, id_pessoa)
+     VALUES
+     ('Civic', 'DRIH111', 1),
+     ('Miata', 'DINE015', 2);
