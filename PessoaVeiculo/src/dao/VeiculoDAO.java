@@ -68,6 +68,31 @@ public class VeiculoDAO {
         }
     }
     
+    public Veiculo GetVeiculo (int id) {
+        String sql = "SELECT * FROM veiculo WHERE id = ?";
+        
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            Veiculo v = new Veiculo();
+            
+            rs.first();
+            v.setId(rs.getInt("id"));
+            v.setModelo(rs.getString("modelo"));
+            v.setPlaca(rs.getString("placa"));
+            int idPessoa = rs.getInt("id_pessoa");
+            PessoaDAO pdao = new PessoaDAO();
+            Pessoa p = pdao.getPessoa(idPessoa);
+            v.setPessoaid(p);
+            return v;
+        } catch (SQLException ex){
+            System.out.println("Erro ao consultar veículo: " + ex.getMessage());
+            return null;
+        }
+    }
+    
     public List<Veiculo> getVeiculos(){
         String sql = "SELECT * FROM veiculo";
         

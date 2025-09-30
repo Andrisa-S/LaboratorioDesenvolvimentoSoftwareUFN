@@ -13,6 +13,17 @@ public class Pessoa {
     private String nome;
     private String sexo;
     private String idioma;
+    
+    public boolean equals(Object obj){
+        if (this == obj){
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()){
+            return false;
+        }
+        Pessoa pessoa = (Pessoa) obj;
+        return id == pessoa.id;
+    }
 
     public int getId() {
         return id;
