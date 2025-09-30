@@ -16,3 +16,9 @@ CREATE TABLE veiculo(
     id_pessoa INT NOT NULL,
     foreign key(id_pessoa) references pessoa(id)
     );
+
+INSERT INTO pessoa (nome, sexo, idioma)
+    VALUES
+    ('Andrisa', 'F', 'Português'),
+    ('Nadine', 'F', 'Russo'),
+    ('Michel', 'M', 'Português');
