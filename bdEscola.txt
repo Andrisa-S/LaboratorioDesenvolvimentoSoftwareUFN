@@ -46,3 +46,11 @@ INSERT INTO matricula (id_aluno, id_professor, data_matricula)
       (3, 2, '1709-07-19'),
       (4, 2, '1205-09-09'),
       (5, 1, '1954-09-18');
+
+CREATE TABLE disciplinas(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    cargaHoraria INT,
+    id_professor INT,
+    FOREIGN KEY (id_professor) REFERENCES professor(id)
+    );
