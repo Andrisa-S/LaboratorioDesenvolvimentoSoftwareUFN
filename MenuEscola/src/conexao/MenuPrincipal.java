@@ -4,8 +4,9 @@
  */
 package conexao;
 
-import dao.InterfaceConsulta;
+import dao.ConsultarEscola;
 import dao.RelatorioAlunos;
+import dao.RelatorioProfessores;
 
 /**
  *
@@ -31,65 +32,65 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar2 = new javax.swing.JMenuBar();
         MnArquivo = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        sair = new javax.swing.JMenuItem();
         MnCadastro = new javax.swing.JMenu();
-        cadPessoa = new javax.swing.JMenuItem();
-        editPessoa = new javax.swing.JMenuItem();
+        cadEscola = new javax.swing.JMenuItem();
+        editEscola = new javax.swing.JMenuItem();
         MnRelatorios = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        RelAlunos = new javax.swing.JMenuItem();
+        RelProfessores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         MnArquivo.setText("Arquivo");
 
-        jMenuItem2.setText("Sair");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        sair.setText("Sair");
+        sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                sairActionPerformed(evt);
             }
         });
-        MnArquivo.add(jMenuItem2);
+        MnArquivo.add(sair);
 
         jMenuBar2.add(MnArquivo);
 
         MnCadastro.setText("Cadastro");
 
-        cadPessoa.setText("Cadastro de Alunos/Professores");
-        cadPessoa.addActionListener(new java.awt.event.ActionListener() {
+        cadEscola.setText("Cadastro de Alunos/Professores");
+        cadEscola.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadPessoaActionPerformed(evt);
+                cadEscolaActionPerformed(evt);
             }
         });
-        MnCadastro.add(cadPessoa);
+        MnCadastro.add(cadEscola);
 
-        editPessoa.setText("Editar e excluir Alunos/Professores");
-        editPessoa.addActionListener(new java.awt.event.ActionListener() {
+        editEscola.setText("Editar e excluir Alunos/Professores");
+        editEscola.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editPessoaActionPerformed(evt);
+                editEscolaActionPerformed(evt);
             }
         });
-        MnCadastro.add(editPessoa);
+        MnCadastro.add(editEscola);
 
         jMenuBar2.add(MnCadastro);
 
         MnRelatorios.setText("Relatórios");
 
-        jMenuItem1.setText("Relatório de Alunos");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        RelAlunos.setText("Relatório de Alunos");
+        RelAlunos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                RelAlunosActionPerformed(evt);
             }
         });
-        MnRelatorios.add(jMenuItem1);
+        MnRelatorios.add(RelAlunos);
 
-        jMenuItem3.setText("Relatório de Professores");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        RelProfessores.setText("Relatório de Professores");
+        RelProfessores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                RelProfessoresActionPerformed(evt);
             }
         });
-        MnRelatorios.add(jMenuItem3);
+        MnRelatorios.add(RelProfessores);
 
         jMenuBar2.add(MnRelatorios);
 
@@ -109,28 +110,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void editPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPessoaActionPerformed
-        InterfaceConsulta editPessoa = new InterfaceConsulta();
-        editPessoa.setVisible(true);
-    }//GEN-LAST:event_editPessoaActionPerformed
+    private void editEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editEscolaActionPerformed
+        ConsultarEscola editEscola = new ConsultarEscola();
+        editEscola.setVisible(true);
+    }//GEN-LAST:event_editEscolaActionPerformed
 
-    private void cadPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadPessoaActionPerformed
-        Interface cadPessoa = new Interface();
-        cadPessoa.setVisible(true);
-    }//GEN-LAST:event_cadPessoaActionPerformed
+    private void cadEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadEscolaActionPerformed
+        CadastroEscola cadEscola = new CadastroEscola();
+        cadEscola.setVisible(true);
+    }//GEN-LAST:event_cadEscolaActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        RelatorioAlunos relPessoa = new RelatorioAlunos();
-        relPessoa.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void RelAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelAlunosActionPerformed
+        RelatorioAlunos relAluno = new RelatorioAlunos();
+        relAluno.setVisible(true);
+    }//GEN-LAST:event_RelAlunosActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_sairActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void RelProfessoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelProfessoresActionPerformed
+        RelatorioProfessores relProfessores = new RelatorioProfessores();
+        relProfessores.setVisible(true);
+    }//GEN-LAST:event_RelProfessoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,11 +173,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu MnArquivo;
     private javax.swing.JMenu MnCadastro;
     private javax.swing.JMenu MnRelatorios;
-    private javax.swing.JMenuItem cadPessoa;
-    private javax.swing.JMenuItem editPessoa;
+    private javax.swing.JMenuItem RelAlunos;
+    private javax.swing.JMenuItem RelProfessores;
+    private javax.swing.JMenuItem cadEscola;
+    private javax.swing.JMenuItem editEscola;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem sair;
     // End of variables declaration//GEN-END:variables
 }

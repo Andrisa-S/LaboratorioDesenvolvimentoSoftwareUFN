@@ -4,8 +4,8 @@
  */
 package dao;
 
-import beansEx2.Aluno;
-import beansEx2.Professor;
+import beans.Aluno;
+import beans.Professor;
 import javax.swing.JOptionPane;
 
 /**
@@ -245,6 +245,7 @@ public class ConsultarEscola extends javax.swing.JFrame {
             ProfessorDAO poDAO = new ProfessorDAO();
             poDAO.editar(po);
             limparFormulario();
+        }
         
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
@@ -303,6 +304,7 @@ public class ConsultarEscola extends javax.swing.JFrame {
                 txtNome.setText(po.getNome());
                 txtIdade.setText(po.getIdade() + "");
                 cmbCursoDisciplina.setSelectedItem(po.getDisciplina());
+            }
         }
     }//GEN-LAST:event_btnConsultarActionPerformed
 

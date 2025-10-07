@@ -62,7 +62,7 @@ public final class RelatorioAlunos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nome", "Idade", "Idioma"
+                "ID", "Nome", "Idade", "Curso"
             }
         ));
         jScrollPane1.setViewportView(tblPessoas);
